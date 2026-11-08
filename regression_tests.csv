@@ -1,0 +1,8 @@
+test_id,test_name,description,expected,actual,status
+T1,Required fields non-empty,Every row has all 12 required fields filled,All rows complete,PASS,
+T2,Canonical URL syntax valid,Every canonical_url matches https?://host[/path],2/2 URLs valid,PASS,
+T3,No duplicate canonical URLs,"Normalized URLs (lowercase host, strip www/trailing slash) are unique",0 duplicates,PASS,
+T4,OUSD evidence AND Tempo evidence present,"Every row has >=20 chars of OUSD evidence and >=20 chars of Tempo evidence, from distinct excerpts",2/2 rows have both,PASS,
+T5,"Verification timestamps ISO-8601 UTC, not future",verified_utc matches YYYY-MM-DDTHH:MM:SSZ and is <= now,2/2 timestamps OK (2026-11-08T22:20:00Z),2/2 timestamps OK (2026-11-08T22:19:46Z),
+T6,"Confidence in {high, medium, low}",confidence field is one of high/medium/low,2/2 high,PASS,
+T7,Canonical URLs reachable (HTTP <400),HEAD/GET each canonical URL; failure must be explained in the report,2/2 reachable,PASS,
